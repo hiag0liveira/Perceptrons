@@ -22,26 +22,30 @@ public class Main {
 
         treinarPerceptron(vetorDeVetoresX, vetorDeVetoresW);
 
-        // Solicitar entrada do usuário
+  // Solicitar entrada do usuário
         System.out.println("Insira um vetor (separe os valores por vírgula):");
         String input = scanner.nextLine();
         // Converter a entrada em um vetor de float
         float[] vetorX = parseInput(input);
 
-        // Calcular a classificação do vetor
-        float[] V = treinarVetor(vetorX, vetorDeVetoresW);
-        float[] Y = calcularY(V);
-
-        // Exibir o resultado
-        System.out.println("Resultado da classificação:");
-        if (Y[0] == 1) {
-            System.out.println("Gripe");
-        } else if (Y[1] == 1) {
-            System.out.println("Covid");
-        } else if (Y[2] == 1) {
-            System.out.println("Alergia");
+        if (vetorX.length != 6) {
+            System.out.println("O vetor deve ter 6 valores.");
         } else {
-            System.out.println("Não foi possível classificar o vetor.");
+            // Calcular a classificação do vetor
+            float[] V = treinarVetor(vetorX, vetorDeVetoresW);
+            float[] Y = calcularY(V);
+
+            // Exibir o resultado
+            System.out.println("Resultado da classificação:");
+            if (Y[0] == 1) {
+                System.out.println("Gripe");
+            } else if (Y[1] == 1) {
+                System.out.println("Covid");
+            } else if (Y[2] == 1) {
+                System.out.println("Alergia");
+            } else {
+                System.out.println("Não foi possível classificar o vetor.");
+            }
         }
 
         scanner.close();
